@@ -1,0 +1,4 @@
+user.findUnique   hust return user by filtering
+subscription   return from array of subscription option array of object (with name and price)
+agent       that has array of agent with promo code and commission percentage  and 
+api call 
