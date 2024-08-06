@@ -5,7 +5,6 @@ Scenario Outline: System gets callback from payment gateway
    And   discount percentage is "<discount_percentage>" 
    And   Price is  "<price>"
    And   commission percentage is "<commision_percentage>"
-   
    Then  expected agent commission must be  "<agent_commission>"
 
 Examples:

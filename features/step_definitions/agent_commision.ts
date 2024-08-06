@@ -1,22 +1,13 @@
 import { After, Before, Given, Then, When } from "@cucumber/cucumber";
 import { PrismaClient } from "@prisma/client";
 import assert from "assert";
-import { http, HttpResponse } from "msw";
-import { setupServer } from "msw/node";
 import container, { Subscribe } from "../../src/DI/di";
-import { PrismaMock } from "./mock/prisma_mock";
+import { PrismaMock } from "./mock/prisma_susbscription_mock";
 //use this.prom to make moke responce based on promocode using mwjs
 
 ///
 Before(async function () {
-  const server = setupServer(
-    http.get("/user", () => {
-      return HttpResponse.json({
-        id: "15d42a4d-1948-4de4-ba78-b8a893feaf45",
-        firstName: "John",
-      });
-    })
-  );
+
   const originalDb = container.resolve<PrismaClient>("db");
  
 

@@ -25,18 +25,26 @@ model User {
 }
 
 model Agent {
-  id                 String       @id @default(uuid())
-  phoneNumber        String       @unique
-  promoCode          String?      @unique
-  commission         Float        @default(0)
-  // commissionPercentage Float        @default(0)
-  discountPercentage Float        @default(0)
-  createdAt          DateTime     @default(now())
-  updatedAt          DateTime     @updatedAt
-  commissions        Commission[]
+  id          String       @id @default(uuid())
+  phoneNumber String       @unique
+  promoCode   String?      @unique
+  commission  Float        @default(0)
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  commissions Commission[]
+  discount    Discount[]
 }
 
 model Commission {
+  id      String @id @default(uuid())
+  weekly  Int
+  monthly Int
+  yearly  Int
+  agentId String @unique
+  agent   Agent  @relation(fields: [agentId], references: [id])
+}
+
+model Discount {
   id      String @id @default(uuid())
   weekly  Int
   monthly Int
